@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+    <link rel='stylesheet' type="text/css" href="{% static 'css/bootstrap.css' %}">
+  </head>
+  <body>
+    <div class="container">
+      <div class="justify-content-center">
+        <div class="col text-md-left pr-md-5">
+          <h1 class="h1 text-primary">
+              Registration Page 
+          </h1>
+          <div class="border border-dark">
+            <div class="container m-md-2">
+              <form action="{% url 'register' %}" method="post">
+                  {% csrf_token %}
+                  {% for field in a_form.visible_fields %}
+                  <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                      {% for error in field.errors %}
+                        <div class="text-danger">
+                          {{ error }}
+                        </div>
+                      {% endfor %}
+                    {% endif %}
+                    {% if field.help_text %}
+                      <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+                    {% endif %} 
+                  </div>
+                  {% endfor %}
+                  {% for field in u_form.visible_fields %}
+                  <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                      {% for error in field.errors %}
+                        <div class="text-danger">
+                          {{ error }}
+                        </div>
+                      {% endfor %}
+                    {% endif %}
+                    {% if field.help_text %}
+                      <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+                    {% endif %} 
+                  </div>
+                  {% endfor %}
+                  <input type="submit" class="btn btn-primary" value="Submit">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

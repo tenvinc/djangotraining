@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel='stylesheet' type="text/css" href="{% static 'css/bootstrap.css' %}">
+  </head>
+  <body>
+    <div class="container justify-content-center">
+      <div class="col text-md-center pr-md-5">
+        {% if messages %}
+            {% for message in messages %}
+              {% if message.tags == "success" %} 
+                <div class="alert alert-success mx-auto w-25" role="alert">{{ message }}</div>
+              {% elif message.tags == "error" %}
+                <div class="alert alert-danger mx-auto w-25" role="alert">{{ message }}</div>
+              {% endif %}
+            {% endfor %}
+        {% endif %}
+        <h1 class="h1 text-primary">Student Portal Login</h1>
+          <div class="border border-dark w-50 mx-auto">
+            <form method="post" class="m-md-2">
+              {% csrf_token %}
+              {% for field in form.visible_fields %}
+                <div class="form-group">
+                  {{ field.label_tag }}
+                  {{ field }}
+                </div>
+              {% endfor %}
+              {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                    <p class="text-danger">{{ error }}</p>
+                {% endfor %}
+              {% endif %}
+              <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+              <button type="submit" class="btn btn-success" >Login</button>
+            </form>
+            {% if request.GET.next %}
+              <p class="text-muted"> You need to log in first, before accessing main features.</p>
+            {% endif %}
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

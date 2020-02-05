@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Student Management Portal</title>
+    <link rel='stylesheet' type="text/css" href="{% static 'css/bootstrap.css' %}">
+  </head>
+  <body>
+    {% if messages %}
+        {% for message in messages %}
+          {% if message.tags == "success" %} 
+            <div class="alert alert-success mx-auto w-25" role="alert">{{ message }}</div>
+          {% elif message.tags == "error" %}
+            <div class="alert alert-danger mx-auto w-25" role="alert">{{ message }}</div>
+          {% endif %}
+        {% endfor %}
+    {% endif %}
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center text-md-left pr-md-5">
+          <h1 class="h1 text-primary">
+              Welcome to Student Management Portal. 
+          </h1>
+          <p>
+            This is an All-In-One portal for student management. Here, you can manage all your student's information easily. Login to access more functionality.
+          </p>
+          <p> 
+            Are you an Admin but not registered yet? Click below to register.
+          </p>
+          <div class="col-md px-2">
+            <a href="{% url 'register' %}" class="btn btn-lg btn-bd-primary w-20 mb-3 btn-outline-primary">Get started</a>
+          </div>
+            <p>Already registered or a student? Login below. </p>
+          <div class="col-md px-2">
+            <a href="{% url 'login' %}" class="btn btn-lg btn-bd-primary w-20 mb-3 btn-outline-primary">Login here</a>
+          </div>
+          <p>
+            If you are a <b>student</b>, please approach your admin staff for the username and password and login below
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

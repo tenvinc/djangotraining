@@ -1,0 +1,10 @@
+{% extends "users/base_portal.html" %}
+
+{% block title %}Logout{% endblock %}
+
+{% block mainbody %}
+  <h4>You have been logged out</h4>
+  <div class="col-md px-2">
+    <a href="{% url 'login' %}" class="btn btn-lg btn-bd-primary w-20 mb-3 btn-outline-primary">Log in again</a>
+  </div>
+{% endblock %}

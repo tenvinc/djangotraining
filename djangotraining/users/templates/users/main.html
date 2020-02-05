@@ -1,0 +1,36 @@
+{% extends "users/base_portal.html" %}
+
+{% block title %}Student Management Portal{% endblock %}
+
+{% block mainbody %}
+  <div class="container-fluid w-75 mt-3 border border-dark">
+    <table class="table table-hover">
+      <caption>List of registered students</caption>
+      <thead>
+        <tr>
+          <th class="h4">Student Name</th>
+          <th class="h4">Year & Course of Study</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {% for student in registered_students %}
+            <td>
+              <h4 class="col">{{ student.full_name }}</h4>
+            </td>
+            <td>
+              <div class="row justify-content-between">
+                <div class="col-4">
+                  <h5>{{ student.course }}, {{ student.year_of_study }}</h5>
+                </div>
+                <div class="col-4">
+                  <a class="btn mb-3 btn-outline-primary" href="{% url 'user-profile' student.pk %}">Visit Profile</a>
+                </div>
+              </div>
+            </td>
+          {% endfor %}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
