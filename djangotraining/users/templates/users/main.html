@@ -3,34 +3,50 @@
 {% block title %}Student Management Portal{% endblock %}
 
 {% block mainbody %}
-  <div class="container-fluid w-75 mt-3 border border-dark">
-    <table class="table table-hover">
-      <caption>List of registered students</caption>
-      <thead>
-        <tr>
-          <th class="h4">Student Name</th>
-          <th class="h4">Year & Course of Study</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          {% for student in registered_students %}
-            <td>
-              <h4 class="col">{{ student.full_name }}</h4>
-            </td>
-            <td>
-              <div class="row justify-content-between">
-                <div class="col-4">
-                  <h5>{{ student.course }}, {{ student.year_of_study }}</h5>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form class="card">
+          <div class="card-body row no-gutters col-12 col-lg-10 offset-lg-1">
+            <div class="col-12 col-md-10">
+              <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Type your search here"/>
+            </div>
+            <div class="col-2">
+                <button class="btn btn-lg btn-success" type="submit">Search</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="mt-3 border border-dark rounded p-2">
+      <table class="table table-hover">
+        <caption>List of registered students</caption>
+        <thead>
+          <tr>
+            <th class="h4">Student Name</th>
+            <th class="h4">Year & Course of Study</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% for student in registered_students %}
+              <td>
+                <h4 class="col">{{ student.full_name }}</h4>
+              </td>
+              <td>
+                <div class="row justify-content-between">
+                  <div class="col-4">
+                    <h5>{{ student.course }}, {{ student.year_of_study }}</h5>
+                  </div>
+                  <div class="col-4">
+                    <a class="btn mb-3 btn-outline-primary" href="{% url 'user-profile' student.pk %}">Visit Profile</a>
+                  </div>
                 </div>
-                <div class="col-4">
-                  <a class="btn mb-3 btn-outline-primary" href="{% url 'user-profile' student.pk %}">Visit Profile</a>
-                </div>
-              </div>
-            </td>
-          {% endfor %}
-        </tr>
-      </tbody>
-    </table>
+              </td>
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 {% endblock %}

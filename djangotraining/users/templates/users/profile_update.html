@@ -3,42 +3,42 @@
 {% block title %}Profile{% endblock %}
 
 {% block mainbody %}
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-        <img src="http://via.placeholder.com/300x250" />
-      </div>
-      <div class="col-md-8">
-        <div class="d-flex align-items-center">
-          <h2 class="font-weight-bold m-0">
-              {{ user_to_show.username }}
-          </h2>
-        </div>
-        <form class="row mt-4 mb-4 pb-3" action="#" method="post">
-          {% csrf_token %}
-          <dt class="col-sm-3">Email</dt>
-          <dd class="col-sm-9">{{ user_to_show.email }}</dd>
-          {% if user_to_show.is_student %}
-            <dt class="col-sm-3">Full Name</dt>
-            <dd class="col-sm-9">{{ profile.full_name }}</dd>
-            <dt class="col-sm-3">{{ s_form.year_of_study.label_tag }}</dt>
-            <dd class="col-sm-9">{{ s_form.year_of_study }}</dd>
-            <dt class="col-sm-3">{{ s_form.course.label_tag }}</dt>
-            <dd class="col-sm-9">{{ s_form.course }}</dd>
-            <dt class="col-sm-3">{{ s_form.age.label_tag }}</dt>
-            <dd class="col-sm-9">{{ s_form.age }}</dd>
-            <dt class="col-sm-3">{{ s_form.weight.label_tag }}</dt>
-            <dd class="col-sm-9">{{ s_form.weight }}</dd>
-            <dt class="col-sm-3">{{ s_form.height.label_tag }}</dt>
-            <dd class="col-sm-9">{{ s_form.height }}</dd>
-          {% endif %}
-          <div class="col-sm-12">
-            <div class="row justify-content-end">
-                <div class="col-md-auto">
-                  <input type="submit" class="btn btn-lg btn-bd-primary w-20 mb-3 btn-outline-primary" value="Confirm changes">
+  <div class="container">
+      <div class="card mt-4">
+        <div class="row card-body row-cols-lg-4">
+          <div class="col-12 col-lg-4 text-center align-self-center">
+            <img class="img" src="http://via.placeholder.com/300x250" />
+          </div>
+          <div class="col-12 col-lg-8">
+            <h2 class="font-weight-bold p-0">
+                {{ user_to_show.username }}
+            </h2>
+            <form class="row pt-2" action="#" method="post">
+              {% csrf_token %}
+              <dt class="col-sm-3">Email</dt>
+              <dd class="col-sm-9">{{ user_to_show.email }}</dd>
+              {% if user_to_show.is_student %}
+                <dt class="col-sm-3">Full Name</dt>
+                <dd class="col-sm-9">{{ profile.full_name }}</dd>
+                <dt class="col-sm-3">{{ s_form.year_of_study.label_tag }}</dt>
+                <dd class="col-sm-9">{{ s_form.year_of_study }}</dd>
+                <dt class="col-sm-3">{{ s_form.course.label_tag }}</dt>
+                <dd class="col-sm-9">{{ s_form.course }}</dd>
+                <dt class="col-sm-3">{{ s_form.age.label_tag }}</dt>
+                <dd class="col-sm-9">{{ s_form.age }}</dd>
+                <dt class="col-sm-3">{{ s_form.weight.label_tag }}</dt>
+                <dd class="col-sm-9">{{ s_form.weight }}</dd>
+                <dt class="col-sm-3">{{ s_form.height.label_tag }}</dt>
+                <dd class="col-sm-9">{{ s_form.height }}</dd>
+              {% endif %}
+              <div class="col-12">
+                <div class="row justify-content-end">
+                  <div class="col-md-auto">
+                    <input type="submit" class="btn btn-lg btn-bd-primary w-20 mb-3 btn-outline-primary" value="Confirm changes">
+                  </div>
                 </div>
-            </div>
-          </form>
+              </div>
+            </form>
         </div>
       </div>
     </div>

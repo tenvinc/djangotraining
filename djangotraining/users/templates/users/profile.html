@@ -3,47 +3,47 @@
 {% block title %}Profile{% endblock %}
 
 {% block mainbody %}
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-        <img src="http://via.placeholder.com/300x250" />
-      </div>
-      <div class="col-md-8">
-        <div class="d-flex align-items-center">
-          <h2 class="font-weight-bold m-0">
-              {{ user_to_show.username }}
-          </h2>
+  <div class="container">
+    <div class="card mt-4">
+      <div class="row card-body row-cols-lg-4">
+        <div class="col-12 col-lg-4 text-center align-self-center">
+          <img class="img" src="http://via.placeholder.com/300x250" />
         </div>
-        <div class="row mt-4 mb-4 pb-3">
-          <dt class="col-sm-3">Full Name</dt>
-          <dd class="col-sm-9">{{ profile.full_name }}</dd>
-          <dt class="col-sm-3">Email</dt>
-          <dd class="col-sm-9">{{ user_to_show.email }}</dd>
-          {% if user_to_show.is_student %}
-            <dt class="col-sm-3">Year Of Study</dt>
-            <dd class="col-sm-9">{{ profile.year_of_study }}</dd>
-            <dt class="col-sm-3">Course of Study</dt>
-            <dd class="col-sm-9">{{ profile.course }}</dd>
-            <dt class="col-sm-3">Current Age</dt>
-            <dd class="col-sm-9">{{ profile.age }}</dd>
-            <dt class="col-sm-3">Weight Information (kg)</dt>
-            <dd class="col-sm-9">{{ profile.weight }}</dd>
-            <dt class="col-sm-3">Height Information (kg)</dt>
-            <dd class="col-sm-9">{{ profile.height }}</dd>
-          {% endif %}
-          {% if user.is_manager or same_person %}
-            <div class="col-sm-12">
-              <div class="row justify-content-end">
-                  <div class="col-md-auto">
-                    {% if same_person %}
-                      <a href="{% url 'profile-update' %}" class="btn btn-lg btn-bd-primary w-20 mb-3 btn-outline-primary">Update profile</a>
-                    {% else %}
-                      <a href="{% url 'profile-update' profile.pk %}" class="btn btn-lg btn-bd-primary w-20 mb-3 btn-outline-primary">Update profile</a>
-                    {% endif %}
-                  </div>
+        <div class="col-12 col-lg-8">
+          <h2 class="font-weight-bold p-0">
+            {{ user_to_show.username }}
+          </h2>
+          <div class="row pt-2">
+            <dt class="col-sm-3">Full Name</dt>
+            <dd class="col-sm-9">{{ profile.full_name }}</dd>
+            <dt class="col-sm-3">Email</dt>
+            <dd class="col-sm-9">{{ user_to_show.email }}</dd>
+            {% if user_to_show.is_student %}
+              <dt class="col-sm-3">Year Of Study</dt>
+              <dd class="col-sm-9">{{ profile.year_of_study }}</dd>
+              <dt class="col-sm-3">Course of Study</dt>
+              <dd class="col-sm-9">{{ profile.course }}</dd>
+              <dt class="col-sm-3">Current Age</dt>
+              <dd class="col-sm-9">{{ profile.age }}</dd>
+              <dt class="col-sm-3">Weight Information (kg)</dt>
+              <dd class="col-sm-9">{{ profile.weight }}</dd>
+              <dt class="col-sm-3">Height Information (kg)</dt>
+              <dd class="col-sm-9">{{ profile.height }}</dd>
+            {% endif %}
+            {% if user.is_manager or same_person %}
+              <div class="col-12">
+                <div class="row justify-content-end">
+                    <div class="col-md-auto">
+                      {% if same_person %}
+                        <a href="{% url 'profile-update' %}" class="btn btn-lg btn-bd-primary w-20 mb-3 btn-outline-primary">Update profile</a>
+                      {% else %}
+                        <a href="{% url 'profile-update' profile.pk %}" class="btn btn-lg btn-bd-primary w-20 mb-3 btn-outline-primary">Update profile</a>
+                      {% endif %}
+                    </div>
+                </div>
               </div>
-            </div>
-          {% endif %}
+            {% endif %}
+          </div>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@
     <title>Student Management Portal</title>
     <link rel='stylesheet' type="text/css" href="{% static 'css/bootstrap.css' %}">
   </head>
-  <body>
+  <body style="height: 100vh;">
     {% if messages %}
         {% for message in messages %}
           {% if message.tags == "success" %} 
@@ -16,28 +16,31 @@
           {% endif %}
         {% endfor %}
     {% endif %}
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-6 text-center text-md-left pr-md-5">
-          <h1 class="h1 text-primary">
-              Welcome to Student Management Portal. 
-          </h1>
+    <div class="container h-100" style="max-width:900px; margin: auto; padding: 10px">
+      <div class="row pt-5 pl-4 pl-lg-0 pr-4 pr-lg-0">
+        <div class="col-12">
+          <h1 class="text-primary text-center">Welcome to Student Management Portal. </h1>
           <p>
-            This is an All-In-One portal for student management. Here, you can manage all your student's information easily. Login to access more functionality.
+            This is an All-In-One portal for student management. <br>
+            Here, you can manage all your student's information easily. Login to access more functionalities.
           </p>
-          <p> 
-            Are you an Admin but not registered yet? Click below to register.
-          </p>
-          <div class="col-md px-2">
-            <a href="{% url 'register' %}" class="btn btn-lg btn-bd-primary w-20 mb-3 btn-outline-primary">Get started</a>
+        </div>
+        <div class="col-12">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <a href="{% url 'register' %}" class="btn btn-bd-primary btn-outline-primary container-fluid">Register here</a>
+              <p class="text-center font-weight-bold">Admin but not registered yet?</p>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <a href="{% url 'login' %}" class="btn btn-bd-primary btn-outline-primary container-fluid">Login here</a>
+              <p class="text-center font-weight-bold">Already registered or a student?</p>
+            </div>
+            <div class="col-12">  
+              <p class="text-">
+                If you are a <b>student</b>, please approach your admin staff for the username and password and login.
+              </p>
+            </div>
           </div>
-            <p>Already registered or a student? Login below. </p>
-          <div class="col-md px-2">
-            <a href="{% url 'login' %}" class="btn btn-lg btn-bd-primary w-20 mb-3 btn-outline-primary">Login here</a>
-          </div>
-          <p>
-            If you are a <b>student</b>, please approach your admin staff for the username and password and login below
-          </p>
         </div>
       </div>
     </div>
